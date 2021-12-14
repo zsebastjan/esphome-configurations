@@ -1,0 +1,34 @@
+esp8266:
+  board: d1_mini
+
+esphome:
+  name: d1mini
+  # This will allow for (future) project identification,
+  # configuration and updates.
+  project:
+    name: zsebastjan.d1mini
+    version: "1.0"
+
+# This should point to the public location of this yaml file.
+dashboard_import:
+  package_import_url: github://zsebastjan/esphome-configurations/d1mini.yaml
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+
+ota:
+  password: "5507a031bd7c37e0d33a8d7aa0eb9dda"
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "D1Mini Fallback Hotspot"
+    password: "TW9k88ztCtzo"
+
+captive_portal:
