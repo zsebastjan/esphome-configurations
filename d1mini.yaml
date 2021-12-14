@@ -15,7 +15,7 @@ esphome:
   # configuration and updates.
   project:
     name: zsebastjan.d1mini
-    version: "1.0"
+    version: "1.2"
 
 # This should point to the public location of this yaml file.
 dashboard_import:
