@@ -19,7 +19,7 @@ esphome:
 
 # This should point to the public location of this yaml file.
 dashboard_import:
-  package_import_url: github://zsebastjan/esphome-configurations/d1mini.yaml
+  package_import_url: github://zsebastjan/esphome-configurations/d1mini.yaml@v1.2
 
 # Enable logging
 logger:
