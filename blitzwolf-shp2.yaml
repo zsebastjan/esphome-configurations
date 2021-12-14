@@ -1,0 +1,103 @@
+substitutions:
+  name: socket-c84865
+  friendly_name: "Washing Machine"
+  # Higher value gives lower watt readout
+  current_res: "0.0023"
+  # Lower value gives lower voltage readout
+  voltage_div: "935"
+
+esp8266:
+  board: esp8285
+  
+esphome:
+  name: $name
+  # Automatically add the mac address to the name
+  # so you can use a single firmware for all devices
+  name_add_mac_suffix: true
+  
+  # This will allow for (future) project identification,
+  # configuration and updates.
+  project:
+    name: zsebastjan.blitzwolf-shp2
+    version: "1.3"
+
+# This should point to the public location of this yaml file.
+dashboard_import:
+  package_import_url: github://zsebastjan/esphome-configurations/blitzwolf-shp2.yaml@v1.3
+
+wifi:
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: $name
+    password: "12345678"
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+
+ota:
+  
+time:
+  - platform: homeassistant
+    id: homeassistant_time
+    
+binary_sensor:
+  - platform: gpio
+    pin:
+      number: GPIO3
+      inverted: True
+    name: "${friendly_name} Button"
+    
+switch:
+- platform: gpio
+  name: "${friendly_name} Relay"
+  pin: GPIO14
+  restore_mode: ALWAYS_ON
+- platform: gpio
+  name: "${friendly_name} LED Blue"
+  pin: GPIO1
+  inverted: True
+  restore_mode: ALWAYS_OFF
+- platform: gpio
+  name: "${friendly_name} LED Red"
+  pin: GPIO13
+  inverted: True
+  restore_mode: ALWAYS_OFF
+
+sensor:
+  - platform: hlw8012
+    sel_pin:
+      number: GPIO12
+      inverted: True
+    cf_pin: GPIO04
+    cf1_pin: GPIO05
+    current_resistor: ${current_res}
+    voltage_divider: ${voltage_div}
+    current:
+      name: "${friendly_name} Current"
+      unit_of_measurement: A
+      icon: mdi:power-socket
+    voltage:
+      name: "${friendly_name} Voltage"
+      unit_of_measurement: V
+    power:
+      name: "${friendly_name} Power"
+      unit_of_measurement: W
+      id: socket_power
+      icon: mdi:power-plug
+    change_mode_every: 8
+    update_interval: 10s
+  - platform: total_daily_energy
+    name: "${friendly_name} Total Daily Energy"
+    power_id: socket_power
+    filters:
+        # Multiplication factor from W to kW is 0.001
+        - multiply: 0.001
+    unit_of_measurement: kWh
+    icon: mdi:calendar-today
+      
+# Extra sensor to keep track of plug uptime
+  - platform: uptime
+    name: ${name}_Uptime Sensor
