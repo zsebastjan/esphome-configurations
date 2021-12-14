@@ -33,6 +33,6 @@ wifi:
   # Enable fallback hotspot (captive portal) in case wifi connection fails
   ap:
     ssid: "D1Mini Fallback Hotspot"
-    password: "TW9k88ztCtzo"
+    password: "12345678"
 
 captive_portal:
