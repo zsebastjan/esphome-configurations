@@ -1,6 +1,6 @@
 substitutions:
   name: socket-c84865
-  friendly_name: "Washing Machine"
+  friendly_name: "BlitzWolf SHP2"
   # Higher value gives lower watt readout
   current_res: "0.0023"
   # Lower value gives lower voltage readout
