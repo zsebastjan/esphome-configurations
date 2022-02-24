@@ -15,11 +15,11 @@ esphome:
   # configuration and updates.
   project:
     name: zsebastjan.blitzwolf-shp10
-    version: "1.5"
+    version: "1.6"
 
 # This should point to the public location of this yaml file.
 dashboard_import:
-  package_import_url: github://zsebastjan/esphome-configurations/blitzwolf-shp10.yaml@v1.5
+  package_import_url: github://zsebastjan/esphome-configurations/blitzwolf-shp10.yaml@v1.6
 
 wifi:
   # Enable fallback hotspot (captive portal) in case wifi connection fails
