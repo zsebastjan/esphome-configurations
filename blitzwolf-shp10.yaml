@@ -22,9 +22,6 @@ dashboard_import:
   package_import_url: github://zsebastjan/esphome-configurations/blitzwolf-shp10.yaml@v1.5
 
 wifi:
-  ssid: !secret wifi_ssid
-  password: !secret wifi_password
-
   # Enable fallback hotspot (captive portal) in case wifi connection fails
   ap:
     ssid: $name
@@ -36,7 +33,6 @@ captive_portal:
 api:
 
 ota:
-  password: !secret esphome_password
 
 # Example configuration entry
 uart:
