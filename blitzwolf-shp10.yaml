@@ -34,6 +34,10 @@ api:
 
 ota:
 
+time:
+  - platform: homeassistant
+    id: homeassistant_time
+
 # Example configuration entry
 uart:
   id: uart_bus
