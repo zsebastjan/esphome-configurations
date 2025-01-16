@@ -278,7 +278,14 @@ switch:
           condition:
             switch.is_on: relay
           then:
-            - light.turn_on: HI
+            - light.turn_on: pwr_led
+
+output:
+  - platform: gpio
+    id: red_led
+    pin:
+      number: GPIO13
+      inverted: true
 
 light:
   - platform: status_led
@@ -289,13 +296,11 @@ light:
       inverted: true
       number: GPIO1
 
-  - platform: gpio
+  - platform: binary
     name: "Red LED"
-    id: red_led
+    output: red_led
+    id: pwr_led
     disabled_by_default: true
-    pin:
-      inverted: true
-      number: GPIO13
 
 text_sensor:
   - platform: wifi_info
